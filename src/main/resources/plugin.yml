@@ -3,6 +3,6 @@ description: MyAddon description
 authors: [author]
 website: https://github.com/author/MyAddon
 version: 0.1.0
-main: com.author.myaddon.MyAddon
+main: com.mcdragonmasters.myaddon.MyAddon
 depend:
   - Skript

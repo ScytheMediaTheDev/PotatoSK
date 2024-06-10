@@ -1,4 +1,4 @@
-package com.author.myaddon.skript.effects;
+package com.mcdragonmasters.myaddon.skript.effects;
 
 import org.bukkit.event.Event;
 
@@ -18,11 +18,11 @@ import ch.njol.util.Kleenean;
 @Examples({ "my effect" })
 @Since("0.1.0")
 
-public class EffMyEffect extends Effect {
+public class EffCommandWithPermission extends Effect{
 
     static {
         Skript.registerEffect(EffMyEffect.class,
-            "my effect"
+                "test frfr"
         );
     }
 
@@ -43,3 +43,4 @@ public class EffMyEffect extends Effect {
     }
 
 }
+
