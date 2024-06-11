@@ -3,6 +3,6 @@ description: PotatoSK fr
 authors: MCdragonmasters
 website: https://github.com/MCdragonmasters/PotatoSK
 version: 0.1.0
-main: com.mcdragonmasters.myaddon.MyAddon
+main: com.mcdragonmasters.PotatoSK.PotatoSK
 depend:
   - Skript
