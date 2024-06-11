@@ -57,7 +57,7 @@ public class MyAddon extends JavaPlugin {
         }));
 
         // Register events
-        new PackageLoader<Listener>("com.author.myaddon.skript.events.bukkit", "register bukkit events").getList()
+        new PackageLoader<Listener>("com.mcdragonmasters.myaddon.skript.events.bukkit", "register bukkit events").getList()
         .thenAccept(events -> {
             for (Listener evt : events) {
                 getServer().getPluginManager().registerEvents(evt, this);
