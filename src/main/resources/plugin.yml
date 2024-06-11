@@ -1,7 +1,7 @@
-name: MyAddon
-description: MyAddon description
+name: PotatoSK
+description: PotatoSK fr
 authors: MCdragonmasters
-website: https://github.com/author/MyAddon
+website: https://github.com/MCdragonmasters/PotatoSK
 version: 0.1.0
 main: com.mcdragonmasters.myaddon.MyAddon
 depend:
