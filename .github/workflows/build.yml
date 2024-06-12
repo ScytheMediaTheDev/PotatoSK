@@ -26,11 +26,11 @@ jobs:
       - name: Make gradlew executable
         run: chmod +x gradlew
 
-      - name: Build MyAddon
+      - name: Build PotatoSK
         run: ./gradlew build
 
       - name: Upload nightly build
         uses: actions/upload-artifact@v4
         with:
-          name: MyAddon
-          path: build/libs/PotatoSK.jar
+          name: PotatoSK
+          path: build/libs/**
