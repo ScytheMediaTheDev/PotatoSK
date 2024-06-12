@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MyAddon.main.iml" filepath="$PROJECT_DIR$/.idea/modules/MyAddon.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MyAddon.test.iml" filepath="$PROJECT_DIR$/.idea/modules/MyAddon.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/PotatoSK.main.iml" filepath="$PROJECT_DIR$/.idea/modules/PotatoSK.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/PotatoSK.test.iml" filepath="$PROJECT_DIR$/.idea/modules/PotatoSK.test.iml" />
     </modules>
   </component>
 </project>

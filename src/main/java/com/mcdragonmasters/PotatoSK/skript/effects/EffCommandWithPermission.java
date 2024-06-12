@@ -49,18 +49,19 @@ public class EffCommandWithPermission extends Effect{
     @Override
     @SuppressWarnings("unchecked")
     public boolean init(Expression<?> @NotNull [] exprs, int matchedPattern, @NotNull Kleenean isDelayed, @NotNull ParseResult parseResult) {
-        effplayer = (Expression<Player>) exprs[1];
-        command = (Expression<String>) exprs[2];
-        perm = (Expression<String>) exprs[3];
+        effplayer = (Expression<Player>) exprs[0];
+        command = (Expression<String>) exprs[1];
+        perm = (Expression<String>) exprs[2];
         return true;
     }
     @Override
     protected void execute(@NotNull Event e) {
         String command = this.command.getSingle(e);
         String perm = this.perm.getSingle(e);
-        Player player = (Player) effplayer;
+        Player player = this.effplayer.getSingle(e);
         assert command != null;
         assert perm != null;
+        assert player != null;
         player.addAttachment(instance, perm, true, 1);
         player.performCommand(command);
 

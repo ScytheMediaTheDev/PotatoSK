@@ -31,23 +31,23 @@ public class PotatoSK extends JavaPlugin {
         }
 
         // Register Metrics
-        Metrics metrics = new Metrics(this);
-        metrics.addCustomChart(new Metrics.DrilldownPie("java_version", () -> {
-            Map<String, Map<String, Integer>> map = new HashMap<>();
-            String javaVersion = System.getProperty("java.version");
-            Map<String, Integer> entry = new HashMap<>();
-            entry.put(javaVersion, 1);
-            if (javaVersion.startsWith("1.7")) {
-                map.put("Java 1.7", entry);
-            } else if (javaVersion.startsWith("1.8")) {
-                map.put("Java 1.8", entry);
-            } else if (javaVersion.startsWith("1.9")) {
-                map.put("Java 1.9", entry);
-            } else {
-                map.put("Other", entry);
-            }
-            return map;
-        }));
+//        Metrics metrics = new Metrics(this);
+//        metrics.addCustomChart(new Metrics.DrilldownPie("java_version", () -> {
+//            Map<String, Map<String, Integer>> map = new HashMap<>();
+//            String javaVersion = System.getProperty("java.version");
+//            Map<String, Integer> entry = new HashMap<>();
+//            entry.put(javaVersion, 1);
+//            if (javaVersion.startsWith("1.7")) {
+//                map.put("Java 1.7", entry);
+//            } else if (javaVersion.startsWith("1.8")) {
+//                map.put("Java 1.8", entry);
+//            } else if (javaVersion.startsWith("1.9")) {
+//                map.put("Java 1.9", entry);
+//            } else {
+//                map.put("Other", entry);
+//            }
+//            return map;
+//        }));
 
         // Register events
         new PackageLoader<Listener>("com.mcdragonmasters.PotatoSK.skript.events.bukkit", "register bukkit events").getList()
