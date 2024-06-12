@@ -34,53 +34,43 @@ import static org.bukkit.Bukkit.getServer;
 @Examples({ "none rn \t test" })
 @Since("0.1.0")
 
-public class EffCommandWithPermission extends Effect{
 
-    private static final HashMap<Permissible, String> map = new HashMap<>();
+public class EffCommandWithPermission extends Effect{
 
     static {
         Skript.registerEffect(EffCommandWithPermission.class,
-                "execute %player% command %string% (with|using) %bukkitpermission%"
+                "execute %player% command %string% with permission %string%"
         );
     }
     private Expression<String> command;
-    private Expression<Permission> perm;
-    private Expression<Player> senders;
+    private Expression<String> perm;
+    private Expression<Player> effplayer;
 
     @Override
     @SuppressWarnings("unchecked")
     public boolean init(Expression<?> @NotNull [] exprs, int matchedPattern, @NotNull Kleenean isDelayed, @NotNull ParseResult parseResult) {
-        senders = (Expression<Player>) exprs[0];
-        command = (Expression<String>) exprs[1];
-        perm = (Expression<Permission>) exprs[2];
-        command = VariableString.setStringMode(command, StringMode.COMMAND);
+        effplayer = (Expression<Player>) exprs[1];
+        command = (Expression<String>) exprs[2];
+        perm = (Expression<String>) exprs[3];
         return true;
     }
     @Override
     protected void execute(@NotNull Event e) {
-        if (senders != null && perm != null) {
-            Permission perm = this.perm.getSingle(e);
-            String command = this.command.getSingle(e);
-            if (senders == null || command == null){
-                return;
-            }
-            for (Player p : senders.getArray(e)) {
-                map.put(p, command);
-                PermissionAttachment attachment = new PermissionAttachment(instance, p);
-                assert perm != null;
-                attachment.setPermission(perm, true);
-                p.performCommand(command);
-                attachment.remove();
-                map.remove(p, command);
-            }
-        }
+        String command = this.command.getSingle(e);
+        String perm = this.perm.getSingle(e);
+        Player player = (Player) effplayer;
+        assert command != null;
+        assert perm != null;
+        player.addAttachment(instance, perm, true, 1);
+        player.performCommand(command);
+
     }
 
 
 
     @Override
     public @NotNull String toString(Event e, boolean debug) {
-        return "execute " + senders + " command " + command + "with permission " + perm; // In case of using a variable, use your variable as "yourvariable.toString(e, debug)"
+        return "execute " + effplayer + " command " + command + "with permission " + perm; // In case of using a variable, use your variable as "yourvariable.toString(e, debug)"
     }
 
 }

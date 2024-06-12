@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -33,12 +32,6 @@ public class PotatoSK extends JavaPlugin {
 
         // Register Metrics
         Metrics metrics = new Metrics(this);
-        metrics.addCustomChart(new Metrics.SimplePie("used_language", () ->
-                getConfig().getString("language", "en")));
-        metrics.addCustomChart(new Metrics.SimplePie("skript_version", () ->
-                Bukkit.getServer().getPluginManager().getPlugin("Skript").getDescription().getVersion()));
-        metrics.addCustomChart(new Metrics.SimplePie("Skord_version", () ->
-                this.getDescription().getVersion()));
         metrics.addCustomChart(new Metrics.DrilldownPie("java_version", () -> {
             Map<String, Map<String, Integer>> map = new HashMap<>();
             String javaVersion = System.getProperty("java.version");
@@ -65,7 +58,7 @@ public class PotatoSK extends JavaPlugin {
         });
 
         // Setup migrations
-		if (classExist("com.olyno.skriptmigrate.SkriptMigrate")) {
+		if (classExist()) {
 			SkriptMigrate.load(this);
 		}
 
@@ -77,9 +70,9 @@ public class PotatoSK extends JavaPlugin {
 
     }
 
-    private boolean classExist(String clazz) {
+    private boolean classExist() {
 		try {
-			Class.forName(clazz);
+			Class.forName("com.olyno.skriptmigrate.SkriptMigrate");
 			return true;
 		} catch (ClassNotFoundException e) {
 			return false;
