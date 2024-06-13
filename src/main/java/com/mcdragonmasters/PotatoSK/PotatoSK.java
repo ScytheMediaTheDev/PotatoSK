@@ -1,14 +1,11 @@
 package com.mcdragonmasters.PotatoSK;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import com.mcdragonmasters.PotatoSK.utils.PackageLoader;
+//import com.mcdragonmasters.PotatoSK.utils.PackageLoader;
 import com.olyno.skriptmigrate.SkriptMigrate;
 
 import ch.njol.skript.Skript;
@@ -50,15 +47,17 @@ public class PotatoSK extends JavaPlugin {
 //        }));
 
         // Register events
-        new PackageLoader<Listener>("com.mcdragonmasters.PotatoSK.skript.events.bukkit", "register bukkit events").getList()
-        .thenAccept(events -> {
-            for (Listener evt : events) {
-                getServer().getPluginManager().registerEvents(evt, this);
-            }
-        });
+        //PluginManager pm = getServer().getPluginManager();
+        //pm.registerEvents(new JoinLeave(), this);
+//        new PackageLoader<Listener>("com.mcdragonmasters.PotatoSK.skript.events.bukkit", "register bukkit events").getList()
+//                .thenAccept(events -> {
+//                    for (Listener evt : events) {
+//                        getServer().getPluginManager().registerEvents(evt, this);
+//                    }
+//                });
 
         // Setup migrations
-		if (classExist()) {
+        if (classExist()) {
 			SkriptMigrate.load(this);
 		}
 
