@@ -1,3 +1,5 @@
+import org.apache.tools.ant.filters.ReplaceTokens
+
 plugins {
     id "java"
 }
@@ -33,6 +35,9 @@ tasks.withType(JavaCompile).configureEach {
 }
 
 processResources {
+    filter ReplaceTokens, tokens: [
+    "version": version
+  ]
     def props = [version: version]
     inputs.properties props
     filteringCharset "UTF-8"
