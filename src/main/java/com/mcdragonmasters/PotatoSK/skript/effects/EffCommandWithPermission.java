@@ -27,7 +27,7 @@ import static com.mcdragonmasters.PotatoSK.PotatoSK.instance;
         "make player execute commands (\"/gamemode survival\" and \"/op %player%\") with permissions (\"minecraft.command.gamemode\" and \"minecraft.command.op\")" })
 @Since("1.0.0")
 
-
+@SuppressWarnings({"unused", "RedundantSuppression", "deprecation"})
 public class EffCommandWithPermission extends Effect{
 
     static {
@@ -54,7 +54,7 @@ public class EffCommandWithPermission extends Effect{
         for (String command : commands.getArray(e)) {
             assert command != null;
             if (command.startsWith("/"))
-                command = "" + command.substring(1);
+                command = command.substring(1);
             if (players != null) {
                 for (Player player : players.getArray(e)) {
                     for (String perm : perms.getArray(e)) {
@@ -76,7 +76,7 @@ public class EffCommandWithPermission extends Effect{
 
     @Override
     public @NotNull String toString(Event e, boolean debug) {
-        return "make " + (players != null ? players.toString(e, debug) : "the console") + " execute " + "command " + commands.toString(e, debug); // In case of using a variable, use your variable as "yourvariable.toString(e, debug)"
+        return "make " + players.toString(e, debug) + " execute command " + commands.toString(e, debug);
     }
 
 }

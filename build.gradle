@@ -27,7 +27,7 @@ java {
     toolchain.languageVersion.set(JavaLanguageVersion.of(21))
 }
 
-def oldestJava = 17
+def oldestJava = 21
 tasks.withType(JavaCompile).configureEach {
     options.compilerArgs += ['-source', '' + oldestJava, '-target', '' + oldestJava]
 }
